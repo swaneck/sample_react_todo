@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import TodoList from './TodoList';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          title: "Hello, React!",
+          desc: "React",
+          done: false
+        },
+        {
+          id: 2,
+          title: "Hello, Redux!",
+          desc: "Reduxこんにちは",
+          done: false
+        },
+      ]
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app">
+        <h1>todoアプリを作ってみた</h1>
+        <TodoList
+          todos={this.state.todos}
+        />
       </div>
     );
   }
