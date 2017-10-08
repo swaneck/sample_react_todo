@@ -1,0 +1,33 @@
+.form {
+  background: #E0F2F1;
+  padding: 30px;
+  margin-bottom: 50px;
+  border: 1px solid #FAFAFA;
+  border-radius: 2px;
+}
+
+.form input {
+  margin-bottom: 20px;
+  width: 200px;
+  height: 25px;
+  font-size: 15px;
+  border-radius: 3px;
+  border: 1px solid #FAFAFA;
+  
+}
+
+.form textarea {
+  margin-bottom: 20px;
+  width: 200px;
+  height: 100px;
+  border-radius: 3px;
+  border: 1px solid #FAFAFA;
+}
+
+.form button {
+  padding: 5px;
+  border-radius: 2px;
+  background: #4DB6AC;
+  border: 1px solid #80CBC4;
+  color: #fff;
+}

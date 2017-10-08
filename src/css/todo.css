@@ -1,0 +1,19 @@
+ul {
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 15px;
+  border: 1px solid #FFEBEE;
+}
+
+.done {
+  background: #FFCDD2;
+  padding: 20px;
+}
+
+.undone {
+  background: #FFEBEE;
+  padding: 20px;
+}
