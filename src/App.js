@@ -6,24 +6,40 @@ import './App.css';
 class App extends Component {
   constructor() {
     super()
-    const todos = [
-      {
-        id: 1,
-        title: "Hello, React!",
-        desc: "React",
-        done: false
-      },
-      {
-        id: 2,
-        title: "Hello, Redux!",
-        desc: "Reduxこんにちは",
-        done: false
-      },
-    ]
+    const todos = []
     this.state = {
+      isLoading: false,
+      hasError: false,
       todos: todos,
       countTodo: todos.length + 1,
     }
+  }
+
+  componentDidMount() {
+    this.fetchData('data.json');
+  }
+
+  fetchData(url) {
+    this.setState({ isLoading: true })
+    fetch(url)
+      .then((response) => {
+        console.log(response)
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        this.setState({ isLoading: false })
+        return response
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        let countTodo = this.state.countTodo
+        const todos = data.map(data => {
+          const todo = Object.assign({}, data, { id: countTodo++, done: false })
+          return todo
+        })
+        this.setState({ todos, countTodo })
+      })
+      .catch(() => this.setState({ hasError: true }))
   }
 
   handleSubmit(e) {
@@ -59,11 +75,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1>todoアプリを作ってみた</h1>
+        <h1>todoアプリ</h1>
         <Form handleSubmit={this.handleSubmit.bind(this)} />
         <TodoList
           todos={this.state.todos}
           setTodoStatus={this.setTodoStatus.bind(this)}
+          isLoading={this.state.isLoading}
+          hasError={this.state.hasError}
         />
       </div>
     );
