@@ -1,0 +1,10 @@
+[
+    {
+        "title": "Hello, React!",
+        "desc": "React始めました"
+    },
+    {
+        "title": "Hello, Redux!",
+        "desc": "Redux始めました"
+    }
+]
